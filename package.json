@@ -30,6 +30,7 @@
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.25",
     "nodemon": "^2.0.4",
+    "prettier": "^2.1.2",
     "rootpath": "^0.1.2"
   },
   "homepage": "https://github.com/mmahmutovic/node-boilerplate#readme",

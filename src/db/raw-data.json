@@ -1,81 +1,88 @@
 [
-    {
-        "username": "saksijas",
-        "password": "test",
-        "externalUser": false
-    }, {
-        "username": "michael",
-        "password": "test",
-        "externalUser": false
-
-    }, {
-        "username": "tony",
-        "password": "test",
-        "externalUser": false
-    }, {
-        "username": "hr",
-        "password": "test",
-        "externalUser": false
-    }, {
-        "firstName": "Michael",
-        "lastName":"Scott",
-        "phoneNumber":"555-1222-222",
-        "ssn":"123-11-1234",
-        "address":"WYK 1",
-        "country":"New York",
-        "city":"New York",
-        "zipCode":"10804",
-        "externalUser": true
-    }, {
-        "firstName": "Gail",
-        "lastName": "Lowe",
-        "phoneNumber":"870-791-4638",
-        "ssn":"592-11-1234",
-        "address":"1374  Barrington Court",
-        "country":"Arkansas",
-        "city":"Camden",
-        "zipCode":"71701",
-        "externalUser": true
-    }, {
-        "firstName": "Regina",
-        "lastName": "Hennessey",
-        "phoneNumber":"870-791-4638",
-        "ssn":"903-51-9002",
-        "address":"1872  Bungalow Road",
-        "country":"Nebraska",
-        "city":"Lincoln",
-        "zipCode":"68501",
-        "externalUser": true
-    }, {
-        "firstName": "Robert",
-        "lastName": "Backer",
-        "phoneNumber":"842-103-1249",
-        "ssn":"512-09-1810",
-        "address":"1429  Maloy Court",
-        "country":"Kansas",
-        "city":"Lawrence",
-        "zipCode":"66044",
-        "externalUser": true
-    }, {
-        "firstName": "Hazel",
-        "lastName": "Jorgensen",
-        "phoneNumber":"404-610-2387",
-        "ssn":"671-20-9257",
-        "address":"4817  Locust Street",
-        "country":"Georgia",
-        "city":"Plains",
-        "zipCode":"31780",
-        "externalUser": true
-    }, {
-        "firstName": "Archie",
-        "lastName": "Furry",
-        "phoneNumber":"281-713-5059",
-        "ssn":"123-11-1234",
-        "address":"2507  Chapel Street",
-        "country":"Texas",
-        "city":"Humble",
-        "zipCode":"77338",
-        "externalUser": true
-    }
-    
+  {
+    "username": "saksijas",
+    "password": "test",
+    "externalUser": false
+  },
+  {
+    "username": "michael",
+    "password": "test",
+    "externalUser": false
+  },
+  {
+    "username": "tony",
+    "password": "test",
+    "externalUser": false
+  },
+  {
+    "username": "hr",
+    "password": "test",
+    "externalUser": false
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Scott",
+    "phoneNumber": "555-1222-222",
+    "ssn": "123-11-1234",
+    "address": "WYK 1",
+    "country": "New York",
+    "city": "New York",
+    "zipCode": "10804",
+    "externalUser": true
+  },
+  {
+    "firstName": "Gail",
+    "lastName": "Lowe",
+    "phoneNumber": "870-791-4638",
+    "ssn": "592-11-1234",
+    "address": "1374  Barrington Court",
+    "country": "Arkansas",
+    "city": "Camden",
+    "zipCode": "71701",
+    "externalUser": true
+  },
+  {
+    "firstName": "Regina",
+    "lastName": "Hennessey",
+    "phoneNumber": "870-791-4638",
+    "ssn": "903-51-9002",
+    "address": "1872  Bungalow Road",
+    "country": "Nebraska",
+    "city": "Lincoln",
+    "zipCode": "68501",
+    "externalUser": true
+  },
+  {
+    "firstName": "Robert",
+    "lastName": "Backer",
+    "phoneNumber": "842-103-1249",
+    "ssn": "512-09-1810",
+    "address": "1429  Maloy Court",
+    "country": "Kansas",
+    "city": "Lawrence",
+    "zipCode": "66044",
+    "externalUser": true
+  },
+  {
+    "firstName": "Hazel",
+    "lastName": "Jorgensen",
+    "phoneNumber": "404-610-2387",
+    "ssn": "671-20-9257",
+    "address": "4817  Locust Street",
+    "country": "Georgia",
+    "city": "Plains",
+    "zipCode": "31780",
+    "externalUser": true
+  },
+  {
+    "firstName": "Archie",
+    "lastName": "Furry",
+    "phoneNumber": "281-713-5059",
+    "ssn": "123-11-1234",
+    "address": "2507  Chapel Street",
+    "country": "Texas",
+    "city": "Humble",
+    "zipCode": "77338",
+    "externalUser": true
+  }
 ]
