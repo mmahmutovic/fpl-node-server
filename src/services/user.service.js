@@ -1,8 +1,8 @@
-const bcrypt = require("bcrypt");
-const crypto = require("crypto");
-const jwt = require("jsonwebtoken");
-const errorHandler = require("../_helpers/error-handler");
-const db = require("../db/db");
+const bcrypt = require('bcrypt');
+const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
+const errorHandler = require('../_helpers/error-handler');
+const db = require('../db/db');
 
 const saltRounds = 10;
 const { User } = db;
@@ -12,15 +12,16 @@ async function auth(req, res) {
     const user = await User.findOne({
       username: req.body.username,
     });
-    if (!user)
+    if (!user) {
       return errorHandler(
         new Error(
-          "Unable to find the user, either username is invalid or you have made an unauthorized request!"
+          'Unable to find the user, either username is invalid or you have made an unauthorized request!',
         ),
         req,
         res,
-        401
+        401,
       );
+    }
     const { password } = user;
     const isMatch = await new Promise((resolve, reject) => {
       bcrypt.compare(req.body.password, password, (err, result) => {
@@ -28,8 +29,7 @@ async function auth(req, res) {
         resolve(result);
       });
     });
-    if (!isMatch)
-      return errorHandler(new Error("Password is incorrect"), req, res, 401);
+    if (!isMatch) { return errorHandler(new Error('Password is incorrect'), req, res, 401); }
     // create a jwt token that is valid for 7 days
     const token = jwt.sign(
       {
@@ -37,8 +37,8 @@ async function auth(req, res) {
       },
       process.env.secret,
       {
-        expiresIn: "7d",
-      }
+        expiresIn: '7d',
+      },
     );
 
     return res.status(200).json({
@@ -57,7 +57,7 @@ async function getExternalUsers(req, res) {
     const users = await User.find({ externalUser: true });
     return res.status(200).json(users);
   } catch (error) {
-    return errorHandler(new Error("Invalid token!"), req, res);
+    return errorHandler(new Error('Invalid token!'), req, res);
   }
 }
 
@@ -68,7 +68,7 @@ async function createExternalUser(req, res) {
   // Encrypting SSN
   const hmac = crypto.createHmac(process.env.algorithm, process.env.hmacKey);
   hmac.update(user.ssn);
-  const hash = hmac.digest("hex");
+  const hash = hmac.digest('hex');
   user.ssn = hash;
 
   user.save();
@@ -80,13 +80,13 @@ async function createInternalUser(req, res) {
     const { username } = req.body;
     const { password } = req.body;
     if (!username || !password) {
-      return errorHandler(new Error("Enter username and password!"), req, res);
+      return errorHandler(new Error('Enter username and password!'), req, res);
     }
     if (await User.findOne({ username })) {
       return errorHandler(
-        new Error("User already exists with that username"),
+        new Error('User already exists with that username'),
         req,
-        res
+        res,
       );
     }
     const hashed = await new Promise((resolve, reject) => {

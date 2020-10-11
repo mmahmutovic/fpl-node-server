@@ -2,19 +2,22 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const schema = new Schema({
-  username: {
+  betId: {
     type: String,
   },
-  password: {
-    type: String,
-  },
-  ethAddress: {
-    type: String,
-  },
-  balance: {
+  betAmount: {
     type: Number,
   },
-  games: {
+  numberOfPlayers: {
+    type: Number,
+  },
+  unlockDate: {
+    type: Number,
+  },
+  winners: {
+    type: [],
+  },
+  players: {
     type: [],
   },
 });
@@ -23,4 +26,4 @@ schema.set('toJSON', {
   virtuals: true,
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.model('Bet', schema);
