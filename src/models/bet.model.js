@@ -20,6 +20,9 @@ const schema = new Schema({
   players: {
     type: [],
   },
+  invitedPlayers: {
+    type: [],
+  },
 });
 
 schema.set('toJSON', {
