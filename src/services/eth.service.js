@@ -22,7 +22,7 @@ async function createGame(req, res) {
     .sendTransaction({
       from: req.body.address,
       to: contractAddress,
-      value: web3.utils.toWei('100', 'ether'),
+      value: web3.utils.toWei(req.body.amount * profit, 'ether'),
     });
   return res;
 }
