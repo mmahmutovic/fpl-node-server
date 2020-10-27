@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const errorHandler = require('../_helpers/error-handler');
 const db = require('../db/db');
@@ -52,30 +51,16 @@ async function auth(req, res) {
   }
 }
 
-async function getExternalUsers(req, res) {
+async function getUsers(req, res) {
   try {
-    const users = await User.find({ externalUser: true });
+    const users = await User.find();
     return res.status(200).json(users);
   } catch (error) {
     return errorHandler(new Error('Invalid token!'), req, res);
   }
 }
 
-async function createExternalUser(req, res) {
-  const user = new User(req.body);
-  user.externalUser = true;
-
-  // Encrypting SSN
-  const hmac = crypto.createHmac(process.env.algorithm, process.env.hmacKey);
-  hmac.update(user.ssn);
-  const hash = hmac.digest('hex');
-  user.ssn = hash;
-
-  user.save();
-  res.status(200).json(user);
-}
-
-async function createInternalUser(req, res) {
+async function createUser(req, res) {
   try {
     const { username } = req.body;
     const { password } = req.body;
@@ -95,16 +80,37 @@ async function createInternalUser(req, res) {
         resolve(hash);
       });
     });
-    const user = new User({ username, password: hashed, externalUser: false });
+    const user = new User({ username, password: hashed });
     await user.save();
     return res.status(200).json({ user });
   } catch (error) {
     return errorHandler(error, req, res);
   }
 }
+
+async function addETHAddress(req, res) {
+  try {
+    const loggedUser = await User.findById(req.user.sub);
+    loggedUser.ethAddress = req.body.ethAddress;
+    await loggedUser.save();
+    return res.status(200).send(loggedUser);
+  } catch (error) {
+    return errorHandler(error, req, res);
+  }
+}
+
+async function getUser(req, res) {
+  try {
+    const loggedUser = await User.findById(req.user.sub);
+    return res.status(200).send(loggedUser);
+  } catch (error) {
+    return errorHandler(error, req, res);
+  }
+}
 module.exports = {
   auth,
-  getExternalUsers,
-  createExternalUser,
-  createInternalUser,
+  getUsers,
+  createUser,
+  addETHAddress,
+  getUser,
 };

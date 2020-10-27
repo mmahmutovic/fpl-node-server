@@ -17,7 +17,9 @@ async function createGame(req, res) {
   bet.betId = resultHash.betId;
   bet.betAmount = req.body.betAmount;
   bet.unlockDate = new Date(req.body.unlockDate).getTime();
+  bet.owner = req.user.sub;
   await bet.save();
+  await contractInstance.methods.createGame(req.body.amount, bet.unlockDate).send({ from: req.body.address, to: contractInstance, value: web3.utils.toWei(req.body.amount * profit, 'ether') });
   await web3.eth
     .sendTransaction({
       from: req.body.address,

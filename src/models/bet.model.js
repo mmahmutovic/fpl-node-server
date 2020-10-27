@@ -8,6 +8,7 @@ const schema = new Schema({
   betAmount: {
     type: Number,
   },
+  owner: {},
   numberOfPlayers: {
     type: Number,
   },
