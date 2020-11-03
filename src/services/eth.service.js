@@ -19,9 +19,9 @@ async function createGame(req, res) {
   bet.unlockDate = new Date(req.body.unlockDate).getTime();
   bet.owner = req.user.sub;
   await bet.save();
-  await contractInstance.methods.createGame(req.body.amount, bet.unlockDate).send({ from: req.body.address, to: contractInstance, value: web3.utils.toWei(req.body.amount * profit, 'ether') });
-  await web3.eth
-    .sendTransaction({
+  await contractInstance.createGame(req.body.amount, bet.unlockDate).send({ from: req.body.address, to: contractInstance, value: web3.utils.toWei(req.body.amount * profit, 'ether') });
+  await contractInstance.transferToContract(req.body.amount)
+    .send({
       from: req.body.address,
       to: contractAddress,
       value: web3.utils.toWei(req.body.amount * profit, 'ether'),
@@ -47,6 +47,12 @@ async function acceptInvite(req, res) {
       value: web3.utils.toWei((bet.betAmount * profit).toString(), 'ether'),
     });
   await contractInstance.acceptInvite().send({ from: req.body.address });
+  await contractInstance.transferToContract(req.body.amount * profit)
+    .send({
+      from: req.body.address,
+      to: contractAddress,
+      value: web3.utils.toWei(req.body.amount * profit, 'ether'),
+    });
   await bet.save();
   return res.status(200).send(bet);
 }
