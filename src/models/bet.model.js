@@ -24,6 +24,9 @@ const schema = new Schema({
   invitedPlayers: {
     type: [],
   },
+  finished: {
+    type: Boolean,
+  },
 });
 
 schema.set('toJSON', {

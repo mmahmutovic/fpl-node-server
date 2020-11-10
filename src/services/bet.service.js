@@ -5,7 +5,8 @@ const { Bet } = db;
 
 async function fetchGames(req, res) {
   try {
-    const result = await Bet.find();
+    // Fetch all active games
+    const result = await Bet.find({ finished: false });
     return res.status(200).json(result);
   } catch (err) {
     return errorHandler(err, req, res);
@@ -13,7 +14,8 @@ async function fetchGames(req, res) {
 }
 async function fetchUsersGames(req, res) {
   try {
-    const result = await Bet.find();
+    // Find all games that requested user has active
+    const result = await Bet.find({ players: { $elemMatch: req.user.sub }, finished: false });
     return res.status(200).json(result);
   } catch (err) {
     return errorHandler(err, req, res);
@@ -21,7 +23,9 @@ async function fetchUsersGames(req, res) {
 }
 async function fetchInvitedGames(req, res) {
   try {
-    const result = await Bet.find();
+    // Fetch all invites
+    const result = await Bet.find({ invitedPlayers: { $elemMatch: req.user.sub } });
+
     return res.status(200).json(result);
   } catch (err) {
     return errorHandler(err, req, res);
@@ -29,7 +33,8 @@ async function fetchInvitedGames(req, res) {
 }
 async function fetchHistory(req, res) {
   try {
-    const result = await Bet.find();
+    // Fetch history of all games that user has been playing
+    const result = await Bet.find({ players: { $elemMatch: req.user.sub }, finished: true });
     return res.status(200).json(result);
   } catch (err) {
     return errorHandler(err, req, res);

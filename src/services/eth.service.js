@@ -39,13 +39,6 @@ async function acceptInvite(req, res) {
   const bet = await Bet.findOneAndUpdate({ _id: req.body.betId }, {
     $push: { players: req.user.sub },
   });
-  contractInstance.acceptInvite(bet.betAmount);
-  web3.eth
-    .sendTransaction({
-      from: req.body.address,
-      to: contractAddress,
-      value: web3.utils.toWei((bet.betAmount * profit).toString(), 'ether'),
-    });
   await contractInstance.acceptInvite().send({ from: req.body.address });
   await contractInstance.transferToContract(req.body.amount * profit)
     .send({
@@ -57,13 +50,13 @@ async function acceptInvite(req, res) {
   return res.status(200).send(bet);
 }
 
-async function listAllInvites() {
-  return 1;
+async function payOut(req, res) {
+  return res.status(200);
 }
 
 module.exports = {
   createGame,
   acceptInvite,
   invitePlayers,
-  listAllInvites,
+  payOut,
 };
