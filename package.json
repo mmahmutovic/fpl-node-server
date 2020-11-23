@@ -38,7 +38,6 @@
   "devDependencies": {
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "fpl-contract": "git+ssh://git@github.com:saksijas/fpl-contract.git",
     "eslint-plugin-import": "^2.22.1"
   }
 }
