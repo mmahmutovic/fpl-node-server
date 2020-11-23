@@ -9,16 +9,16 @@ function getExternalUsers(req, res) {
 function createExternalUser(req, res) {
   userService.createExternalUser(req, res);
 }
-function createInternalUser(req, res) {
-  userService.createInternalUser(req, res);
-}
 function login(req, res) {
   userService.auth(req, res);
+}
+function signup(req, res) {
+  userService.signup(req, res);
 }
 
 router.get('/', getExternalUsers);
 router.post('/addUser', createExternalUser);
-router.post('/signup', createInternalUser);
 router.post('/login', login);
+router.post('/signup', signup);
 
 module.exports = router;

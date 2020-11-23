@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const errorHandler = require('../_helpers/error-handler');
@@ -60,7 +62,7 @@ async function getUsers(req, res) {
   }
 }
 
-async function createUser(req, res) {
+async function signup(req, res) {
   try {
     const { username } = req.body;
     const { password } = req.body;
@@ -82,7 +84,7 @@ async function createUser(req, res) {
     });
     const user = new User({ username, password: hashed });
     await user.save();
-    return res.status(200).json({ user });
+    return await auth(req, res);
   } catch (error) {
     return errorHandler(error, req, res);
   }
@@ -107,10 +109,11 @@ async function getUser(req, res) {
     return errorHandler(error, req, res);
   }
 }
+
 module.exports = {
   auth,
   getUsers,
-  createUser,
+  signup,
   addETHAddress,
   getUser,
 };

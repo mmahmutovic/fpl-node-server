@@ -8,7 +8,7 @@ web3.setProvider(new web3.providers.HttpProvider(etherUrl));
 const contractInstance = new web3.eth.Contract(Betting.abi, contractAddress);
 const db = require('../db/db');
 
-const profit = 1.02;
+// const profit = 1.02;
 const { Bet } = db;
 
 async function createGame(req, res) {
@@ -19,13 +19,15 @@ async function createGame(req, res) {
   bet.unlockDate = new Date(req.body.unlockDate).getTime();
   bet.owner = req.user.sub;
   await bet.save();
-  await contractInstance.createGame(req.body.amount, bet.unlockDate).send({ from: req.body.address, to: contractInstance, value: web3.utils.toWei(req.body.amount * profit, 'ether') });
-  await contractInstance.transferToContract(req.body.amount)
-    .send({
-      from: req.body.address,
-      to: contractAddress,
-      value: web3.utils.toWei(req.body.amount * profit, 'ether'),
-    });
+  // await contractInstance.createGame(req.body.amount, bet.unlockDate)
+  // .send({ from: req.body.address, to: contractInstance,
+  // value: web3.utils.toWei(req.body.amount * profit, 'ether') });
+  // await contractInstance.transferToContract(req.body.amount)
+  //   .send({
+  //     from: req.body.address,
+  //     to: contractAddress,
+  //     value: web3.utils.toWei(req.body.amount * profit, 'ether'),
+  //   });
   return res;
 }
 
@@ -39,13 +41,13 @@ async function acceptInvite(req, res) {
   const bet = await Bet.findOneAndUpdate({ _id: req.body.betId }, {
     $push: { players: req.user.sub },
   });
-  await contractInstance.acceptInvite().send({ from: req.body.address });
-  await contractInstance.transferToContract(req.body.amount * profit)
-    .send({
-      from: req.body.address,
-      to: contractAddress,
-      value: web3.utils.toWei(req.body.amount * profit, 'ether'),
-    });
+  // await contractInstance.acceptInvite().send({ from: req.body.address });
+  // await contractInstance.transferToContract(req.body.amount * profit)
+  //   .send({
+  //     from: req.body.address,
+  //     to: contractAddress,
+  //     value: web3.utils.toWei(req.body.amount * profit, 'ether'),
+  //   });
   await bet.save();
   return res.status(200).send(bet);
 }

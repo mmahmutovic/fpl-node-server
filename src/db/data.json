@@ -15,74 +15,23 @@
     "externalUser": false
   },
   {
-    "username": "hr",
+    "username": "sosa",
     "password": "$2b$10$IfBYF.lAYIKt7hXgC21dzOgXUUcgJnfvDolDUGTp.Pl.fiojdlRoW",
     "externalUser": false
   },
   {
-    "firstName": "Michael",
-    "lastName": "Scott",
-    "phoneNumber": "555-1222-222",
-    "ssn": "5d7cde834f46edd4b651616e5188750e4eb306e6",
-    "address": "WYK 1",
-    "country": "New York",
-    "city": "New York",
-    "zipCode": "10804",
-    "externalUser": true
+    "username": "unicorn",
+    "password": "$2b$10$IfBYF.lAYIKt7hXgC21dzOgXUUcgJnfvDolDUGTp.Pl.fiojdlRoW",
+    "externalUser": false
   },
   {
-    "firstName": "Gail",
-    "lastName": "Lowe",
-    "phoneNumber": "870-791-4638",
-    "ssn": "39be4613b885229876a2d111f67a0f0fd80f7dc9",
-    "address": "1374  Barrington Court",
-    "country": "Arkansas",
-    "city": "Camden",
-    "zipCode": "71701",
-    "externalUser": true
+    "username": "player",
+    "password": "$2b$10$IfBYF.lAYIKt7hXgC21dzOgXUUcgJnfvDolDUGTp.Pl.fiojdlRoW",
+    "externalUser": false
   },
   {
-    "firstName": "Regina",
-    "lastName": "Hennessey",
-    "phoneNumber": "870-791-4638",
-    "ssn": "1290818aa65b8f219b247b82998d3caf30c6b25e",
-    "address": "1872  Bungalow Road",
-    "country": "Nebraska",
-    "city": "Lincoln",
-    "zipCode": "68501",
-    "externalUser": true
-  },
-  {
-    "firstName": "Robert",
-    "lastName": "Backer",
-    "phoneNumber": "842-103-1249",
-    "ssn": "6af67940eb50b91b117ebfe8d9bc7eec08bcc190",
-    "address": "1429  Maloy Court",
-    "country": "Kansas",
-    "city": "Lawrence",
-    "zipCode": "66044",
-    "externalUser": true
-  },
-  {
-    "firstName": "Hazel",
-    "lastName": "Jorgensen",
-    "phoneNumber": "404-610-2387",
-    "ssn": "b99d5a7c82778c486d41073e581a55abdd4f2e0b",
-    "address": "4817  Locust Street",
-    "country": "Georgia",
-    "city": "Plains",
-    "zipCode": "31780",
-    "externalUser": true
-  },
-  {
-    "firstName": "Archie",
-    "lastName": "Furry",
-    "phoneNumber": "281-713-5059",
-    "ssn": "5d7cde834f46edd4b651616e5188750e4eb306e6",
-    "address": "2507  Chapel Street",
-    "country": "Texas",
-    "city": "Humble",
-    "zipCode": "77338",
-    "externalUser": true
+    "username": "bigboss",
+    "password": "$2b$10$IfBYF.lAYIKt7hXgC21dzOgXUUcgJnfvDolDUGTp.Pl.fiojdlRoW",
+    "externalUser": false
   }
 ]
