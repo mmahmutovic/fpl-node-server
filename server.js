@@ -14,7 +14,7 @@ server.use(
   }),
 );
 server.use(bodyParser.json());
-server.use(cors('*'));
+server.use(cors());
 // use JWT auth to secure the api
 server.use(jwt());
 
