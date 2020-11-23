@@ -1,20 +1,22 @@
 const Web3 = require('web3');
-const Betting = require('../../node_modules/fpl-contract/build/contracts/Betting.json');
+// const Betting = require('../../node_modules/fpl-contract/build/contracts/Betting.json');
 
 const etherUrl = 'http://localhost:8545';
-const contractAddress = Betting.networks[5777].address;
+// const contractAddress = Betting.networks[5777].address;
 const web3 = new Web3();
 web3.setProvider(new web3.providers.HttpProvider(etherUrl));
-const contractInstance = new web3.eth.Contract(Betting.abi, contractAddress);
+// const contractInstance = new web3.eth.Contract(Betting.abi, contractAddress);
 const db = require('../db/db');
 
 // const profit = 1.02;
 const { Bet } = db;
 
 async function createGame(req, res) {
-  const resultHash = await contractInstance.methods.balanceOf(contractAddress).send({ from: '0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1' });
+  // const resultHash = await contractInstance.methods.balanceOf(contractAddress)
+  // .send({ from: '0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1' });
   const bet = new Bet();
-  bet.betId = resultHash.betId;
+  bet.betId = 1;
+  // bet.betId = resultHash.betId;
   bet.betAmount = req.body.betAmount;
   bet.unlockDate = new Date(req.body.unlockDate).getTime();
   bet.owner = req.user.sub;
