@@ -110,10 +110,42 @@ async function getUser(req, res) {
   }
 }
 
+// Need to test this functionality
+
+async function addFriend(req, res) {
+  try {
+    const friend = await User.findById(req.body.userId);
+    friend.requests.push(req.user.sub);
+    friend.save();
+    return res.status(200).send();
+  } catch (error) {
+    return errorHandler(error, req, res);
+  }
+}
+
+// Need to test this functionality
+async function acceptRequest(req, res) {
+  try {
+    const loggedUser = await User.findByIdAndUpdate({ id: req.user.sub }, {
+      $pull: { requests: req.body.userId },
+    });
+    const friend = await User.findByIdAndUpdate(req.body.userId,
+      { $push: { friends: loggedUser } });
+    loggedUser.friends.push(friend);
+    loggedUser.save();
+    friend.save();
+    return res.status(200).send(loggedUser);
+  } catch (error) {
+    return errorHandler(error, req, res);
+  }
+}
+
 module.exports = {
   auth,
   getUsers,
   signup,
   addETHAddress,
   getUser,
+  addFriend,
+  acceptRequest,
 };

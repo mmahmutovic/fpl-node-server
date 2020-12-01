@@ -5,6 +5,9 @@ const schema = new Schema({
   username: {
     type: String,
   },
+  email: {
+    type: String,
+  },
   password: {
     type: String,
   },
@@ -14,8 +17,17 @@ const schema = new Schema({
   balance: {
     type: Number,
   },
-  games: {
+  createdGames: {
     type: [],
+  },
+  acceptedGames: {
+    type: [],
+  },
+  profilePicture: {},
+  friends: { type: [] },
+  requests: { type: [] },
+  gamePoints: {
+    type: Number,
   },
 });
 

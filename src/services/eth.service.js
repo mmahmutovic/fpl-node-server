@@ -11,6 +11,7 @@ const db = require('../db/db');
 
 const profit = 1.02;
 const { Bet } = db;
+const { User } = db;
 
 async function createGame(req, res) {
   const resultHash = await contractInstance.methods.balanceOf(contractAddress)
@@ -21,6 +22,8 @@ async function createGame(req, res) {
   bet.unlockDate = new Date(req.body.unlockDate).getTime();
   bet.owner = req.user.sub;
   await bet.save();
+  const user = await User.findById(req.user.sub);
+  user.createdGames.push(bet);
   await contractInstance.createGame(req.body.amount, bet.unlockDate)
     .send({
       from: req.body.address,
@@ -65,6 +68,8 @@ async function acceptInvite(req, res) {
       value: web3.utils.toWei(req.body.amount * profit, 'ether'),
     });
   await bet.save();
+  const user = await User.findById(req.user.sub);
+  user.createdGames.push(bet);
   return res.status(200).send(bet);
 }
 
